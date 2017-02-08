@@ -1,6 +1,6 @@
 # iOS Protocol Oriented Networking in Swift
 
-When one of our projects transistioned to another engineer, we noticed that everyone's networking code was different. We didn't like that everytime someone took over a project, they had to "learn" that network layer. To solve this, the iOS Engineers decided that we should all use the same networking setup to solve these headaches, thus we looked into Protocol Oriented Networking.
+When one of our projects transitioned to another engineer, we noticed that everyone's networking code was different. We didn't like that everytime someone took over a project, they had to "learn" that network layer. To solve this, the iOS Engineers decided that we should all use the same networking setup to solve these headaches, thus we looked into Protocol Oriented Networking.
 
 
 ### Dependencies
