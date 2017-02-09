@@ -30,7 +30,7 @@ To integrate BuckoNetworking into your Xcode project using Carthage, specify it 
 github "teepsllc/Bucko-Networking"
 ```
 
-Run `carthage update` to build the framework and drag the built `Alamofire.framework` into your Xcode project.
+Run `carthage update` to build the framework and drag the built `BuckoNetworking.framework` into your Xcode project.
 
 #### CocoaPods
 
