@@ -1,0 +1,10 @@
+framework module BuckoNetworking {
+  umbrella header "BuckoNetworking.h"
+
+  export *
+  module * { export * }
+}
+
+module BuckoNetworking.Swift {
+    header "BuckoNetworking-Swift.h"
+}

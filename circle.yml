@@ -11,8 +11,8 @@ test:
         PROVISIONING_PROFILE=
         -sdk iphonesimulator
         -destination 'platform=iOS Simulator,OS=latest,name=iPhone 6'
-        -project Networking.xcodeproj
-        -scheme Networking
+        -project BuckoNetworking.xcworkspace
+        -scheme BuckoNetworking
         clean build test |
       tee $CIRCLE_ARTIFACTS/xcode_raw.log |
       xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
