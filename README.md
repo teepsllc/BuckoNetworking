@@ -32,6 +32,14 @@ github "teepsllc/BuckoNetworking"
 
 Run `carthage update` to build the framework and drag the built `BuckoNetworking.framework` into your Xcode project.
 
+To use BuckoNetworking, just import the needed modules.
+
+```swift
+import BuckoNetworking
+import Alamofire
+import SwiftyJSON
+```
+
 #### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
