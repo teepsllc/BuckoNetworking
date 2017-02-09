@@ -8,6 +8,56 @@ When one of our projects transitioned to another engineer, we noticed that every
 
 We ended up going with [Alamofire](https://github.com/Alamofire/Alamofire) instead of `URLSession` for a few reasons. Alamofire is asynchronous by nature, has session management, reduces boilerplate code, and is very easy to use.
 
+[SwiftJSON](https://github/com/SwiftJSON/SwiftyJSON)
+
+### Installation
+------
+
+#### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate BuckoNetworking into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "teepsllc/Bucko-Networking"
+```
+
+Run `carthage update` to build the framework and drag the built `Alamofire.framework` into your Xcode project.
+
+#### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+To integrate BuckoNetworking into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0'
+use_frameworks!
+
+target '<Your Target Name>' do
+    pod 'BuckoNetworking'
+end
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
 
 ### Blog
 ------
