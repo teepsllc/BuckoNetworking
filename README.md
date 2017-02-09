@@ -8,7 +8,7 @@ When one of our projects transitioned to another engineer, we noticed that every
 
 We ended up going with [Alamofire](https://github.com/Alamofire/Alamofire) instead of `URLSession` for a few reasons. Alamofire is asynchronous by nature, has session management, reduces boilerplate code, and is very easy to use.
 
-[SwiftyJSON](https://github/com/SwiftyJSON/SwiftyJSON)
+[SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 
 ### Installation
 ------
