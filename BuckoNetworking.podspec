@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "BuckoNetworking"
-  spec.version = "1.0.0"
+  spec.version = "1.0.1"
   spec.summary = "Protocol Oriented Networking"
   spec.homepage = "https://github.com/teepsllc/BuckoNetworking"
   spec.license = { type: 'MIT', file: 'LICENSE' }

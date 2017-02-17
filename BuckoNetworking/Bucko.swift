@@ -39,9 +39,9 @@ public struct Bucko {
 
      ```
     */
-    var manager: SessionManager = SessionManager()
-    static let shared = Bucko()
-    var delegate: BuckoErrorHandler?
+    public var manager: SessionManager = SessionManager()
+    public static let shared = Bucko()
+    public var delegate: BuckoErrorHandler?
     
     /**
      Make API requests
