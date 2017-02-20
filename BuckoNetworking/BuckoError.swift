@@ -8,7 +8,7 @@
 
 import Foundation.NSError
 
-final class BuckoError: NSError {
+public final class BuckoError: NSError {
     
     fileprivate enum Code: Int {
         case api = 1

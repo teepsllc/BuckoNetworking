@@ -8,12 +8,20 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 public protocol BuckoErrorHandler {
     func buckoRequest(request: URLRequest, error: Error)
 }
 
 public typealias BuckoResponseClosure = ((DataResponse<Any>) -> Void)
+public typealias HttpMethod = HTTPMethod
+public typealias HttpHeaders = HTTPHeaders
+public typealias Encoding = ParameterEncoding
+public typealias UrlEncoding = URLEncoding
+public typealias JsonEncoding = JSONEncoding
+public typealias Body = Parameters
+public typealias Json = JSON
 
 public struct Bucko {
     /**

@@ -6,9 +6,7 @@
 //  Copyright © 2017 Teeps. All rights reserved.
 //
 
-import SwiftyJSON
-
 public protocol JSONDecodable {
     associatedtype Model
-    func map(from json: JSON) throws -> Model
+    static func map(from json: Json) throws -> Model
 }
