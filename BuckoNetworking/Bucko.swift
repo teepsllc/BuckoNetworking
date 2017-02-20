@@ -69,6 +69,7 @@ public struct Bucko {
       - parameter completion: The closure that will return the response from the server.
       - returns: The request that was made.
      */
+    @discardableResult
     public func request(endpoint: Endpoint, completion: @escaping BuckoResponseClosure) -> Request {
         let request = manager.request(
             endpoint.fullURL,

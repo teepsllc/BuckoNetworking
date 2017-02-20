@@ -19,6 +19,7 @@ public protocol JSONDecodableEndpoint: Endpoint {
 }
 
 public extension JSONDecodableEndpoint {
+    @discardableResult
     public func request(completion: @escaping ((Response?, Error?) -> Void)) -> Request {
         let request = Bucko.shared.request(endpoint: self) { response in
             
