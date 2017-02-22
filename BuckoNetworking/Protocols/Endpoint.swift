@@ -19,7 +19,7 @@ public protocol Endpoint {
      This will automatically be set by the baseURL and the path.
      */
     var fullURL: String { get }
-    var method: HttpMethod { get set }
+    var method: HttpMethod { get }
     
     /**
      By default, encoding will be set to URLEncoding for GET requests
@@ -31,7 +31,7 @@ public protocol Endpoint {
      PropertyListEncoding.default
      You can also create your own.
      */
-    var encoding: Encoding { get set }
+    var encoding: Encoding { get }
     
     /**
         By default this will be set to empty - Parameters()
@@ -43,7 +43,7 @@ public protocol Endpoint {
      headers to set. You can also create an extention on Endpoint to also have
      this default to a value.
     */
-    var headers: HttpHeaders { get set }
+    var headers: HttpHeaders { get }
 }
 
 public extension Endpoint {
