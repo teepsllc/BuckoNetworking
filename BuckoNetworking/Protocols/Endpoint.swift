@@ -56,6 +56,9 @@ public extension Endpoint {
     }
     
     var body: Body {
-        return Body()
+        get {
+            return Body()
+        }
+        set {}
     }
 }
