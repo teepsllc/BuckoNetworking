@@ -11,14 +11,14 @@
     You can create an extension to create default values. This is recommended for the baseURL.
  */
 public protocol Endpoint {
-    var baseURL: String { get set } // https://example.com
-    var path: String { get set } // /users/
+    var baseURL: String { get } // https://example.com
+    var path: String { get } // /users/
     
     /**
      This should **NOT** be set by the conforming type.
      This will automatically be set by the baseURL and the path.
      */
-    var fullURL: String { get set }
+    var fullURL: String { get }
     var method: HttpMethod { get set }
     
     /**
