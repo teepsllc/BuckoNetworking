@@ -68,6 +68,9 @@ Then, run the following command:
 $ pod install
 ```
 
+### Usage
+------
+TODO
 
 ### Blog
 ------
