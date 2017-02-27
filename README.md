@@ -73,4 +73,4 @@ TODO
 ### Blog
 ------
 
-You can go to our [Blog](https://staging.teeps.org/blog/2017/02/07/27-protocol-oriented-networking-in-swift) to read more.
+You can go to our [Blog](https://teeps.org/blog/2017/02/27/26-protocol-oriented-networking-in-swift) to read more.
