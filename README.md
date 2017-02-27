@@ -42,6 +42,8 @@ import SwiftyJSON
 
 #### CocoaPods
 
+Note: We don't use CocoaPods, so this may or may not work.
+
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
 ```bash
@@ -56,7 +58,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'BuckoNetworking'
+    pod 'BuckoNetworking', :git => 'https://github.com/teepsllc/BuckoNetworking.git'
 end
 ```
 
