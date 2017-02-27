@@ -32,12 +32,10 @@ github "teepsllc/BuckoNetworking"
 
 Run `carthage update` to build the framework and drag the built `BuckoNetworking.framework` into your Xcode project.
 
-To use BuckoNetworking, just import the needed modules.
+To use BuckoNetworking, just import the module.
 
 ```swift
 import BuckoNetworking
-import Alamofire
-import SwiftyJSON
 ```
 
 #### CocoaPods
