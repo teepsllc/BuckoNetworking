@@ -1,4 +1,4 @@
-# iOS Protocol Oriented Networking in Swift
+# iOS Protocol-Oriented Networking in Swift
 
 After developing a number of applications, we noticed that everyone's networking code was different. Every time maintenance developers had to take over a project, they had to "learn" the individual nuances of each network layer. This lead to a lot of wasted time. To solve this, our iOS Engineers decided to use the same networking setup. Thus we looked into Protocol-Oriented Networking.
 
