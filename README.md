@@ -84,7 +84,101 @@ $ pod install
 
 ### Usage
 ------
-TODO
+`BuckoNetworking` revolves around `Endpoint`s. There are a few ways you can use it. We use `services` to make all of our endpoints.
+
+#### class/struct
+
+```swift
+import BuckoNetworking
+
+// Create an endpoint
+struct UserCreateService: Endpoint {
+    var baseURL: String = "https://example.com/"
+    var path: String = "users/"
+    var method: HttpMethod = .post
+    var body: Body {
+        var body = Body()
+        body["first_name"] = "Bucko"
+        return body
+    }
+    var headers: HttpHeaders = ["Authorization" : "Bearer SOME_TOKEN"]
+}
+
+// Use your endpoint
+Bucko.shared.request(UserCreateService()) { response in
+  if response.result.isSuccess {
+    // Response successful!
+    let json = Json(response.result.value!)
+  } else {
+    // Failure
+  }
+}
+
+```
+
+#### enum
+
+```swift
+import BuckoNetworking
+
+// Create an endpoint
+enum UserEndpoints {
+    case getUsers
+    case getUser(id: String)
+    case createUser(firstName: String, lastName: String)
+}
+
+extension UserEndpoints: Endpoint {
+    // Set up the paths
+    var path: String {
+        switch self {
+        case .getUsers: return "users/"
+        case .getUser(let id): return "users/\(id)/"
+        case .createUser: return "users/"
+        }
+    }
+
+    // Set up the methods
+    var method: HTTPMethod {
+        switch self {
+        case .getUsers: return .get
+        case .getUser: return .get
+        case .createUser: return .post
+        }
+    }
+
+    // Set up any headers you may have. You can also create an extension on `Endpoint` to set these globally.
+    var headers: HTTPHeaders {
+        return ["Authorization" : "Bearer SOME_TOKEN"]
+    }
+
+    // Lastly, we set the body. Here, the only route that requires parameters is create.
+    var body: Parameters {
+        var body: Parameters = Parameters()
+
+        switch self {
+        case .createUser(let firstName, let lastName):
+            body["first_name"] = firstName
+            body["last_name"] = lastName
+        default:
+            break
+        }
+
+        return body
+    }
+}
+
+// Use your endpoint
+ Bucko.shared.request(.getUser(id: "1")) { response in
+    if response.result.isSuccess {
+        // Response successful!
+        let json = Json(response.result.value!)
+    } else {
+      // Failure
+    }
+}
+
+```
 
 ### Blog
 ------
