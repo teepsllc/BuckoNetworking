@@ -141,7 +141,7 @@ extension UserService: Endpoint {
     }
 
     // Set up the methods
-    var method: HTTPMethod {
+    var method: HttpMethod {
         switch self {
         case .getUsers: return .get
         case .getUser: return .get
@@ -150,13 +150,13 @@ extension UserService: Endpoint {
     }
 
     // Set up any headers you may have. You can also create an extension on `Endpoint` to set these globally.
-    var headers: HTTPHeaders {
+    var headers: HttpHeaders {
         return ["Authorization" : "Bearer SOME_TOKEN"]
     }
 
     // Lastly, we set the body. Here, the only route that requires parameters is create.
-    var body: Parameters {
-        var body: Parameters = Parameters()
+    var body: Body {
+        var body: Body = Body()
 
         switch self {
         case .createUser(let firstName, let lastName):
