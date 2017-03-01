@@ -30,9 +30,23 @@ To integrate BuckoNetworking into your Xcode project using Carthage, specify it 
 github "teepsllc/BuckoNetworking"
 ```
 
-Run `carthage update` to build the framework and drag the built `BuckoNetworking.framework` into your Xcode project.
+1. Run `carthage update` to build the framework.
+1. On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop `BuckoNetworking.framework` from the [Carthage/Build]() folder on disk. You will also need to drag `Alamofire.framework` and `SwiftyJSON.framework` into your project.
+1. On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase”. Create a Run Script in which you specify your shell (ex: `/bin/sh`), add the following contents to the script area below the shell:
 
-You will also need to drag `Alamofire.framework` and `SwiftyJSON.framework` into your project.
+  ```sh
+  /usr/local/bin/carthage copy-frameworks
+  ```
+
+  and add the paths to the frameworks you want to use under “Input Files”, e.g.:
+
+  ```
+  $(SRCROOT)/Carthage/Build/iOS/BuckoNetworking.framework
+  $(SRCROOT)/Carthage/Build/iOS/Alamofire.framework
+  $(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework
+  ```
+  This script works around an [App Store submission bug](http://www.openradar.me/radar?id=6409498411401216) triggered by universal binaries and ensures that necessary bitcode-related files and dSYMs are copied when archiving.
+
 
 To use BuckoNetworking, just import the module.
 
