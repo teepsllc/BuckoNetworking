@@ -131,7 +131,7 @@ enum UserService {
 }
 
 extension UserService: Endpoint {
-   var baseURL: String { return "https://example.com/" }
+    var baseURL: String { return "https://example.com/" }
 
     // Set up the paths
     var path: String {
