@@ -169,13 +169,13 @@ extension UserService: Endpoint {
 }
 
 // Use your endpoint
- Bucko.shared.request(UserService.getUser(id: "1")) { response in
-    if response.result.isSuccess {
-        // Response successful!
-        let json = Json(response.result.value!)
-    } else {
-      // Failure
-    }
+Bucko.shared.request(UserService.getUser(id: "1")) { response in
+  if response.result.isSuccess {
+    // Response successful!
+    let json = Json(response.result.value!)
+  } else {
+    // Failure
+  }
 }
 
 ```
