@@ -122,13 +122,13 @@ Bucko.shared.request(UserCreateService()) { response in
 import BuckoNetworking
 
 // Create an endpoint
-enum UserEndpoints {
+enum UserService {
     case getUsers
     case getUser(id: String)
     case createUser(firstName: String, lastName: String)
 }
 
-extension UserEndpoints: Endpoint {
+extension UserService: Endpoint {
     // Set up the paths
     var path: String {
         switch self {
@@ -169,7 +169,7 @@ extension UserEndpoints: Endpoint {
 }
 
 // Use your endpoint
- Bucko.shared.request(.getUser(id: "1")) { response in
+ Bucko.shared.request(UserService.getUser(id: "1")) { response in
     if response.result.isSuccess {
         // Response successful!
         let json = Json(response.result.value!)
