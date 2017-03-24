@@ -14,9 +14,9 @@
 		6A7D02941E4CC12900E66FD0 /* BuckoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D028E1E4CC12900E66FD0 /* BuckoError.swift */; };
 		6A7D02961E4CC12900E66FD0 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02911E4CC12900E66FD0 /* JSONDecodable.swift */; };
 		6A7D02971E4CC12900E66FD0 /* JSONDecodableEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02921E4CC12900E66FD0 /* JSONDecodableEndpoint.swift */; };
-		6A7D02D61E4CC5E900E66FD0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7D02D51E4CC5E900E66FD0 /* Alamofire.framework */; };
-		6A7D02D81E4CC5EE00E66FD0 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7D02D71E4CC5EE00E66FD0 /* SwiftyJSON.framework */; };
 		6A7D02EE1E4CC87200E66FD0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02ED1E4CC87200E66FD0 /* Endpoint.swift */; };
+		6AEC6FDD1E84B05500BBD3F7 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEC6FDB1E84B05500BBD3F7 /* SwiftyJSON.framework */; };
+		6AEC6FDE1E84B05500BBD3F7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEC6FDC1E84B05500BBD3F7 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +43,8 @@
 		6A7D02D51E4CC5E900E66FD0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Carthage/Checkouts/Alamofire/build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		6A7D02D71E4CC5EE00E66FD0 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Carthage/Checkouts/SwiftyJSON/build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		6A7D02ED1E4CC87200E66FD0 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		6AEC6FDB1E84B05500BBD3F7 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		6AEC6FDC1E84B05500BBD3F7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A7D02D81E4CC5EE00E66FD0 /* SwiftyJSON.framework in Frameworks */,
-				6A7D02D61E4CC5E900E66FD0 /* Alamofire.framework in Frameworks */,
+				6AEC6FDD1E84B05500BBD3F7 /* SwiftyJSON.framework in Frameworks */,
+				6AEC6FDE1E84B05500BBD3F7 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +121,8 @@
 		6A7D02D41E4CC5E900E66FD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6AEC6FDB1E84B05500BBD3F7 /* SwiftyJSON.framework */,
+				6AEC6FDC1E84B05500BBD3F7 /* Alamofire.framework */,
 				6A7D02D71E4CC5EE00E66FD0 /* SwiftyJSON.framework */,
 				6A7D02D51E4CC5E900E66FD0 /* Alamofire.framework */,
 			);
@@ -375,9 +379,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Alamofire/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/Carthage/Checkouts/SwiftyJSON/build/Debug-iphoneos",
+					"$(SRCROOT)/Carthage/Build",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = BuckoNetworking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -401,10 +404,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Alamofire/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/Carthage/Checkouts/SwiftyJSON/build/Debug-iphoneos",
+					"$(SRCROOT)/Carthage/Build",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = BuckoNetworking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -471,6 +474,7 @@
 				6A7D028C1E4CC09400E66FD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

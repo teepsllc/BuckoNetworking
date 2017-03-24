@@ -8,7 +8,7 @@
     "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : 9223372036854775807,
     "2B89CA2E0395F8719C96F3246ACBC1C5F9738FE5" : 9223372036854775807
   },
-  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5DFE07F3-8034-4AD4-9291-3DEF027C9A17",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7AB36CA6-CA7F-4F44-9603-B268692A1FA6",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "67620B5EFA902936DF04070AF595B76AB0333747" : "bucko-networking\/Carthage\/Checkouts\/Alamofire\/",
     "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : "bucko-networking\/Carthage\/Checkouts\/SwiftyJSON\/",
@@ -16,7 +16,7 @@
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "BuckoNetworking",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BuckoNetworking.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BuckoNetworking.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/teepsllc\/Bucko-Networking.git",
