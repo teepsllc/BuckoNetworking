@@ -10,9 +10,9 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7AB36CA6-CA7F-4F44-9603-B268692A1FA6",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "67620B5EFA902936DF04070AF595B76AB0333747" : "bucko-networking\/Carthage\/Checkouts\/Alamofire\/",
-    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : "bucko-networking\/Carthage\/Checkouts\/SwiftyJSON\/",
-    "2B89CA2E0395F8719C96F3246ACBC1C5F9738FE5" : "bucko-networking\/"
+    "67620B5EFA902936DF04070AF595B76AB0333747" : "buckonetworking\/Carthage\/Checkouts\/Alamofire\/",
+    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : "buckonetworking\/Carthage\/Checkouts\/SwiftyJSON\/",
+    "2B89CA2E0395F8719C96F3246ACBC1C5F9738FE5" : "buckonetworking\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "BuckoNetworking",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
