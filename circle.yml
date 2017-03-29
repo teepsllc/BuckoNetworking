@@ -16,3 +16,10 @@ test:
         clean build test |
       tee $CIRCLE_ARTIFACTS/xcode_raw.log |
       xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
+
+dependencies:
+  override:
+    - bin/bootstrap-if-needed:
+        timeout: 1200
+  cache_directories:
+    - "Carthage"
