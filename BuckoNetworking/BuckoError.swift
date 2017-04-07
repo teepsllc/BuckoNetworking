@@ -37,7 +37,11 @@ public final class BuckoError: NSError {
     }
     
     convenience init(mappingErrorKey key: String) {
-        self.init(code: .jsonMapping, reason: "An unknown error occurred", description: "Could not parse value for key \(key)")
+        self.init(
+          code: .jsonMapping,
+          reason: "An unknown error occurred",
+          description: "Could not parse value for key \(key)"
+      )
     }
     
     convenience init(authError reason: String, description: String) {

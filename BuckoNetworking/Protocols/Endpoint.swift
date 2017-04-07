@@ -46,7 +46,6 @@ public protocol Endpoint {
     var headers: HttpHeaders { get }
 }
 
-
 public extension Endpoint {
     var encoding: Encoding {
         return method == .get ? UrlEncoding.default : JsonEncoding.default

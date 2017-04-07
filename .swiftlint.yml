@@ -1,0 +1,31 @@
+included: # paths to include during linting. `--path` is ignored if present.
+  - BuckoNetworking
+  - BuckoNetworkingTests
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+
+opt_in_rules:
+  - closure_spacing # Closure expressions should have a single space inside each brace.
+  - closure_end_indentation # Closure end should have the same indentation as the line that started it.
+  - operator_usage_whitespace # Operators should be surrounded by a single whitespace.
+  - explicit_init # Explicitly calling .init() should be avoided.
+  - nimble_operator # Prefer Nimble operator overloads over free matcher functions.
+  - fatal_error_message # Ensure fatalError() calls have a message.
+
+identifier_name:
+  excluded:
+    - id
+    - to
+
+force_cast: warning
+force_try: warning
+line_length:
+  warning: 100
+  ignores_function_declarations: true
+  ignores_comments: true
+
+trailing_whitespace:
+  ignores_empty_lines: true
+
+
