@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-public protocol BuckoErrorHandler {
+public protocol BuckoErrorHandler: class {
     func buckoRequest(request: URLRequest, error: Error)
 }
 
@@ -49,7 +49,7 @@ public struct Bucko {
     */
     public var manager: SessionManager = SessionManager()
     public static let shared = Bucko()
-    public var delegate: BuckoErrorHandler?
+    public weak var delegate: BuckoErrorHandler?
     
     /**
      Make API requests
