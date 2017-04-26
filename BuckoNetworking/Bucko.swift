@@ -29,18 +29,19 @@ public struct Bucko {
    e.g - Creating server trust policies
    ```
    let manager: SessionManager = {
-   // Create the server trust policies
-   let serverTrustPolicies: [String: ServerTrustPolicy] = [
-   "0.0.0.0": .disableEvaluation // Use your server obviously. Can be a url as well, example.com
-   ]
-   // Create custom manager
-   let configuration = URLSessionConfiguration.default
-   configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
-   let manager = SessionManager(
-   configuration: URLSessionConfiguration.default,
-   serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-   )
-   return manager
+     // Create the server trust policies
+     let serverTrustPolicies: [String: ServerTrustPolicy] = [
+     "0.0.0.0": .disableEvaluation // Use your server obviously. Can be a url as well, example.com
+     ]
+   
+     // Create custom manager
+     let configuration = URLSessionConfiguration.default
+     configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+     let manager = SessionManager(
+      configuration: URLSessionConfiguration.default,
+      serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+     )
+     return manager
    }()
    
    Bucko.shared.manager = manager
@@ -52,20 +53,55 @@ public struct Bucko {
   public weak var delegate: BuckoErrorHandler?
   
   public init() {
-    
   }
   
   /**
-   Make API requests
+   Make API requests. Use this to handle responses with your own response closure. The example
+   uses responseData to handle the response. If you are expecting JSON, you should
+   use Bucko.shared.request(endpoint:,completion:) instead.
+   
+   Example:
+   
+   ```
+   let request = Bucko.shared.request(.getUser(id: "1"))
+   request.responseData { response in
+   
+   if response.result.isSuccess {
+    debugPrint(response.result.description)
+    } else {
+    debugPrint(response.result.error ?? "Error")
+    }
+   }
+   ```
+   
+   - parameter endpoint:   The endpoint to use.
+   - returns: The request that was made.
+   */
+  public func request(endpoint: Endpoint) -> DataRequest {
+    let request = manager.request(
+      endpoint.fullURL,
+      method: endpoint.method,
+      parameters: endpoint.body,
+      encoding: endpoint.encoding,
+      headers: endpoint.headers
+    )
+    
+    print(request.description)
+    return request
+  }
+  
+  /**
+   Make API requests with JSON response.
    
    Example:
    
    ```
    let request = Bucko.shared.request(.getUser(id: "1")) { response in
+   
    if let response.result.isSuccess {
-   let json = JSON(response.result.value!)
+    let json = JSON(response.result.value!)
    } else {
-   // Handle error
+    // Handle error
    }
    ```
    
@@ -74,14 +110,8 @@ public struct Bucko {
    - returns: The request that was made.
    */
   @discardableResult
-  public func request(endpoint: Endpoint, completion: @escaping BuckoResponseClosure) -> Request {
-    let request = manager.request(
-      endpoint.fullURL,
-      method: endpoint.method,
-      parameters: endpoint.body,
-      encoding: endpoint.encoding,
-      headers: endpoint.headers
-      ).responseJSON { response in
+  public func request(endpoint: Endpoint, completion: @escaping BuckoResponseClosure) -> DataRequest {
+    let request = self.request(endpoint: endpoint).responseJSON { response in
         
         if response.result.isSuccess {
           debugPrint(response.result.description)
