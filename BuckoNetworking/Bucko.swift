@@ -58,7 +58,7 @@ public struct Bucko {
   /**
    Make API requests. Use this to handle responses with your own response closure. The example
    uses responseData to handle the response. If you are expecting JSON, you should
-   use Bucko.shared.request(endpoint:,completion:) instead.
+   use `Bucko.shared.request(endpoint:,completion:)` instead.
    
    Example:
    
