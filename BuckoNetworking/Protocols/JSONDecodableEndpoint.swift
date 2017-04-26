@@ -10,37 +10,37 @@ import Alamofire
 import SwiftyJSON
 
 public protocol JSONDecodableEndpoint: Endpoint {
-    associatedtype Response
-    associatedtype JSONType
-    /**
-     parseJSON(_:) should call an object that conforms to JSONDecodable
-     */
-    func parseJSON(_ json: JSONType) throws -> Response
+  associatedtype Response
+  associatedtype JSONType
+  /**
+   parseJSON(_:) should call an object that conforms to JSONDecodable
+   */
+  func parseJSON(_ json: JSONType) throws -> Response
 }
 
 public extension JSONDecodableEndpoint {
-    @discardableResult
-    public func request(completion: @escaping ((Response?, Error?) -> Void)) -> Request {
-        let request = Bucko.shared.request(endpoint: self) { response in
-            
-            if response.result.isSuccess {
-                guard let json = JSON(response.result.value!) as? JSONType else {
-                    completion(nil, BuckoError.invalidAPIResponse())
-                    return
-                }
-                
-                do {
-                    let result = try self.parseJSON(json)
-                    completion(result, nil)
-                } catch {
-                    debugPrint(error)
-                    completion(nil, error)
-                }
-            } else {
-                completion(nil, response.result.error)
-            }
+  @discardableResult
+  public func request(completion: @escaping ((Response?, Error?) -> Void)) -> Request {
+    let request = Bucko.shared.request(endpoint: self) { response in
+      
+      if response.result.isSuccess {
+        guard let json = JSON(response.result.value!) as? JSONType else {
+          completion(nil, BuckoError.invalidAPIResponse())
+          return
         }
         
-        return request
+        do {
+          let result = try self.parseJSON(json)
+          completion(result, nil)
+        } catch {
+          debugPrint(error)
+          completion(nil, error)
+        }
+      } else {
+        completion(nil, response.result.error)
+      }
     }
+    
+    return request
+  }
 }

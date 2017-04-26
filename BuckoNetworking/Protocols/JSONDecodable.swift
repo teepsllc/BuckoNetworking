@@ -7,6 +7,6 @@
 //
 
 public protocol JSONDecodable {
-    associatedtype Model
-    static func map(from json: Json) throws -> Model
+  associatedtype Model
+  static func map(from json: Json) throws -> Model
 }
