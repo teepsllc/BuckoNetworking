@@ -15,12 +15,19 @@ public protocol BuckoErrorHandler: class {
 }
 
 public typealias BuckoResponseClosure = ((DataResponse<Any>) -> Void)
+@available(*, deprecated, message: "Use HTTPMethod instead")
 public typealias HttpMethod = HTTPMethod
+@available(*, deprecated, message: "Use HTTPHeaders instead")
 public typealias HttpHeaders = HTTPHeaders
+@available(*, deprecated, message: "Use ParameterEncoding instead")
 public typealias Encoding = ParameterEncoding
+@available(*, deprecated, message: "Use URLEncoding instead")
 public typealias UrlEncoding = URLEncoding
+@available(*, deprecated, message: "Use JSONEncoding instead")
 public typealias JsonEncoding = JSONEncoding
+@available(*, deprecated, message: "Use Parameters instead")
 public typealias Body = Parameters
+@available(*, deprecated, message: "Use JSON instead")
 public typealias Json = JSON
 
 public struct Bucko {

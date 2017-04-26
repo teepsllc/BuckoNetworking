@@ -19,7 +19,7 @@ public protocol Endpoint {
    This will automatically be set by the baseURL and the path.
    */
   var fullURL: String { get }
-  var method: HttpMethod { get }
+  var method: HTTPMethod { get }
   
   /**
    By default, encoding will be set to URLEncoding for GET requests
@@ -31,31 +31,31 @@ public protocol Endpoint {
    PropertyListEncoding.default
    You can also create your own.
    */
-  var encoding: Encoding { get }
+  var encoding: ParameterEncoding { get }
   
   /**
    By default this will be set to empty - Parameters()
    */
-  var body: Body { get }
+  var body: Parameters { get }
   
   /**
    Authorization is usually set in the headers. You can set this to `[:]` if you don't have any
    headers to set. You can also create an extention on Endpoint to also have
    this default to a value.
    */
-  var headers: HttpHeaders { get }
+  var headers: HTTPHeaders { get }
 }
 
 public extension Endpoint {
-  var encoding: Encoding {
-    return method == .get ? UrlEncoding.default : JsonEncoding.default
+  var encoding: ParameterEncoding {
+    return method == .get ? URLEncoding.default : JSONEncoding.default
   }
   
   var fullURL: String {
     return baseURL + path
   }
   
-  var body: Body {
-    return Body()
+  var body: Parameters {
+    return Parameters()
   }
 }
