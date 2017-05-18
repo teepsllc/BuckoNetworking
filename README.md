@@ -97,11 +97,11 @@ import BuckoNetworking
 struct UserCreateService: Endpoint {
     var baseURL: String = "https://example.com/"
     var path: String = "users/"
-    var method: HttpMethod = .post
-    var body: Body {
-        var body = Body()
-        body["first_name"] = "Bucko"
-        return body
+    var method: HTTPMethod = .post
+    var parameters: Parameters {
+        var parameters = Parameters()
+        parameters["first_name"] = "Bucko"
+        return parameters
     }
     var headers: HttpHeaders = ["Authorization" : "Bearer SOME_TOKEN"]
 }
@@ -143,7 +143,7 @@ extension UserService: Endpoint {
     }
 
     // Set up the methods
-    var method: HttpMethod {
+    var method: HTTPMethod {
         switch self {
         case .getUsers: return .get
         case .getUser: return .get
@@ -152,23 +152,23 @@ extension UserService: Endpoint {
     }
 
     // Set up any headers you may have. You can also create an extension on `Endpoint` to set these globally.
-    var headers: HttpHeaders {
+    var headers: HTTPHeaders {
         return ["Authorization" : "Bearer SOME_TOKEN"]
     }
 
     // Lastly, we set the body. Here, the only route that requires parameters is create.
-    var body: Body {
-        var body: Body = Body()
+    var parameters: Parameters {
+        var parameters: Parameters = Parameters()
 
         switch self {
         case .createUser(let firstName, let lastName):
-            body["first_name"] = firstName
-            body["last_name"] = lastName
+            parameters["first_name"] = firstName
+            parameters["last_name"] = lastName
         default:
             break
         }
 
-        return body
+        return parameters
     }
 }
 
