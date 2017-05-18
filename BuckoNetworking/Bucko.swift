@@ -108,7 +108,7 @@ public struct Bucko {
    if let response.result.isSuccess {
     let json = JSON(response.result.value!)
    } else {
-    // Handle error
+    let error = JSON(data: response.data)
    }
    ```
    
@@ -118,7 +118,7 @@ public struct Bucko {
    */
   @discardableResult
   public func request(endpoint: Endpoint, completion: @escaping BuckoResponseClosure) -> DataRequest {
-    let request = self.request(endpoint: endpoint).responseJSON { response in
+    let request = self.request(endpoint: endpoint).validate().responseJSON { response in
         
         if response.result.isSuccess {
           debugPrint(response.result.description)
