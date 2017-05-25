@@ -124,6 +124,7 @@ public struct Bucko {
           debugPrint(response.result.description)
         } else {
           debugPrint(response.result.error ?? "Error")
+          debugPrint(response.serverError ?? "Error")
           // Can globably handle errors here if you want
           if let urlRequest = response.request, let error = response.result.error {
             self.delegate?.buckoRequest(request: urlRequest, error: error)
@@ -135,5 +136,12 @@ public struct Bucko {
     
     print(request.description)
     return request
+  }
+}
+
+extension DataResponse {
+  var serverError: JSON? {
+    guard let data = self.data else { return nil }
+    return JSON(data: data)
   }
 }
