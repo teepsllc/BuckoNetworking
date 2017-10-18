@@ -734,6 +734,7 @@
 				6ABB44F41EF8644F00E344AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6ABB44F81EF8644F00E344AF /* Build configuration list for PBXNativeTarget "BuckoNetworking macOSTests" */ = {
 			isa = XCConfigurationList;
@@ -742,6 +743,7 @@
 				6ABB44F61EF8644F00E344AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

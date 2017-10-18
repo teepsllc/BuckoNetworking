@@ -140,7 +140,7 @@ public struct Bucko {
 }
 
 extension DataResponse {
-  var serverError: JSON? {
+  public var serverError: JSON? {
     guard let data = self.data else { return nil }
     return JSON(data: data)
   }
