@@ -35,31 +35,3 @@ public extension DecodableEndpoint {
     return request
   }
 }
-
-struct User: Decodable {
-  var name: String
-  var phoneNumber: String
-  
-  enum CodingKeys: String, CodingKey {
-    case name
-    case phoneNumber = "phone_number"
-  }
-}
-
-struct UserService: DecodableEndpoint {
-  typealias Response = User
-  var baseURL: String { return "https://example.com" }
-  var path: String { return "/users" }
-  var method: HTTPMethod { return .get }
-  var body: Parameters { return Parameters() }
-  var headers: HTTPHeaders { return HTTPHeaders() }
-}
-
-//UserService().request { (user, error) in
-//  guard let user = user else {
-//    // Do Error
-//    return
-//  }
-//
-//  // Do something with user
-//}
