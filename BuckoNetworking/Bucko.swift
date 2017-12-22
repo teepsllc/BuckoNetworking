@@ -8,13 +8,13 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 public protocol BuckoErrorHandler: class {
   func buckoRequest(request: URLRequest, error: Error)
 }
 
 public typealias BuckoResponseClosure = ((DataResponse<Any>) -> Void)
+public typealias BuckoDataResponseClosure = ((DataResponse<Data>) -> Void)
 @available(*, deprecated, message: "Use HTTPMethod instead")
 public typealias HttpMethod = HTTPMethod
 @available(*, deprecated, message: "Use HTTPHeaders instead")
@@ -27,8 +27,6 @@ public typealias UrlEncoding = URLEncoding
 public typealias JsonEncoding = JSONEncoding
 @available(*, deprecated, message: "Use Parameters instead")
 public typealias Body = Parameters
-@available(*, deprecated, message: "Use JSON instead")
-public typealias Json = JSON
 
 public struct Bucko {
   /**
@@ -124,7 +122,6 @@ public struct Bucko {
           debugPrint(response.result.description)
         } else {
           debugPrint(response.result.error ?? "Error")
-          debugPrint(response.serverError ?? "Error")
           // Can globably handle errors here if you want
           if let urlRequest = response.request, let error = response.result.error {
             self.delegate?.buckoRequest(request: urlRequest, error: error)
@@ -137,11 +134,25 @@ public struct Bucko {
     print(request.description)
     return request
   }
-}
-
-extension DataResponse {
-  public var serverError: JSON? {
-    guard let data = self.data else { return nil }
-    return JSON(data: data)
+  
+  @discardableResult
+  public func requestData(endpoint: Endpoint, completion: @escaping BuckoDataResponseClosure) -> DataRequest {
+    let request = self.request(endpoint: endpoint).validate().responseData { response in
+      
+      if response.result.isSuccess {
+        debugPrint(response.result.description)
+      } else {
+        debugPrint(response.result.error ?? "Error")
+        // Can globably handle errors here if you want
+        if let urlRequest = response.request, let error = response.result.error {
+          self.delegate?.buckoRequest(request: urlRequest, error: error)
+        }
+      }
+      
+      completion(response)
+    }
+    
+    print(request.description)
+    return request
   }
 }

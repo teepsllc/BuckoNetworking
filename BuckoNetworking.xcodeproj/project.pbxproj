@@ -12,19 +12,15 @@
 		6A7D02871E4CC09400E66FD0 /* BuckoNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7D02471E4CB6FE00E66FD0 /* BuckoNetworking.framework */; };
 		6A7D02931E4CC12900E66FD0 /* Bucko.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D028D1E4CC12900E66FD0 /* Bucko.swift */; };
 		6A7D02941E4CC12900E66FD0 /* BuckoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D028E1E4CC12900E66FD0 /* BuckoError.swift */; };
-		6A7D02961E4CC12900E66FD0 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02911E4CC12900E66FD0 /* JSONDecodable.swift */; };
-		6A7D02971E4CC12900E66FD0 /* JSONDecodableEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02921E4CC12900E66FD0 /* JSONDecodableEndpoint.swift */; };
+		6A7D02971E4CC12900E66FD0 /* DecodableEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02921E4CC12900E66FD0 /* DecodableEndpoint.swift */; };
 		6A7D02EE1E4CC87200E66FD0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02ED1E4CC87200E66FD0 /* Endpoint.swift */; };
 		6ABB44EB1EF8644F00E344AF /* BuckoNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB44E21EF8644F00E344AF /* BuckoNetworking.framework */; };
-		6ABB44FC1EF8661100E344AF /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB44FA1EF8661100E344AF /* SwiftyJSON.framework */; };
 		6ABB44FD1EF8661100E344AF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB44FB1EF8661100E344AF /* Alamofire.framework */; };
 		6ABB44FE1EF86BFF00E344AF /* Bucko.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D028D1E4CC12900E66FD0 /* Bucko.swift */; };
 		6ABB44FF1EF86C0200E344AF /* BuckoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D028E1E4CC12900E66FD0 /* BuckoError.swift */; };
 		6ABB45001EF86C0400E344AF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02ED1E4CC87200E66FD0 /* Endpoint.swift */; };
-		6ABB45011EF86C0600E344AF /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02911E4CC12900E66FD0 /* JSONDecodable.swift */; };
-		6ABB45021EF86C0900E344AF /* JSONDecodableEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02921E4CC12900E66FD0 /* JSONDecodableEndpoint.swift */; };
+		6ABB45021EF86C0900E344AF /* DecodableEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02921E4CC12900E66FD0 /* DecodableEndpoint.swift */; };
 		6ABB45041EF86DE200E344AF /* BuckoNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A7D02751E4CBEFC00E66FD0 /* BuckoNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6AEC6FDD1E84B05500BBD3F7 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEC6FDB1E84B05500BBD3F7 /* SwiftyJSON.framework */; };
 		6AEC6FDE1E84B05500BBD3F7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEC6FDC1E84B05500BBD3F7 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +50,7 @@
 		6A7D02861E4CC09400E66FD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7D028D1E4CC12900E66FD0 /* Bucko.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bucko.swift; sourceTree = "<group>"; };
 		6A7D028E1E4CC12900E66FD0 /* BuckoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuckoError.swift; sourceTree = "<group>"; };
-		6A7D02911E4CC12900E66FD0 /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
-		6A7D02921E4CC12900E66FD0 /* JSONDecodableEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodableEndpoint.swift; sourceTree = "<group>"; };
+		6A7D02921E4CC12900E66FD0 /* DecodableEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableEndpoint.swift; sourceTree = "<group>"; };
 		6A7D02D51E4CC5E900E66FD0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Carthage/Checkouts/Alamofire/build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		6A7D02D71E4CC5EE00E66FD0 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Carthage/Checkouts/SwiftyJSON/build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		6A7D02ED1E4CC87200E66FD0 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -72,7 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AEC6FDD1E84B05500BBD3F7 /* SwiftyJSON.framework in Frameworks */,
 				6AEC6FDE1E84B05500BBD3F7 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ABB44FC1EF8661100E344AF /* SwiftyJSON.framework in Frameworks */,
 				6ABB44FD1EF8661100E344AF /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,8 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				6A7D02ED1E4CC87200E66FD0 /* Endpoint.swift */,
-				6A7D02911E4CC12900E66FD0 /* JSONDecodable.swift */,
-				6A7D02921E4CC12900E66FD0 /* JSONDecodableEndpoint.swift */,
+				6A7D02921E4CC12900E66FD0 /* DecodableEndpoint.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -272,17 +264,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Teeps LLC";
 				TargetAttributes = {
 					6A7D02461E4CB6FE00E66FD0 = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					6A7D02811E4CC09400E66FD0 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7X55CRBHSJ;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					6ABB44E11EF8644F00E344AF = {
@@ -373,8 +366,7 @@
 			files = (
 				6A7D02931E4CC12900E66FD0 /* Bucko.swift in Sources */,
 				6A7D02941E4CC12900E66FD0 /* BuckoError.swift in Sources */,
-				6A7D02971E4CC12900E66FD0 /* JSONDecodableEndpoint.swift in Sources */,
-				6A7D02961E4CC12900E66FD0 /* JSONDecodable.swift in Sources */,
+				6A7D02971E4CC12900E66FD0 /* DecodableEndpoint.swift in Sources */,
 				6A7D02EE1E4CC87200E66FD0 /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,8 +386,7 @@
 				6ABB44FE1EF86BFF00E344AF /* Bucko.swift in Sources */,
 				6ABB45001EF86C0400E344AF /* Endpoint.swift in Sources */,
 				6ABB44FF1EF86C0200E344AF /* BuckoError.swift in Sources */,
-				6ABB45021EF86C0900E344AF /* JSONDecodableEndpoint.swift in Sources */,
-				6ABB45011EF86C0600E344AF /* JSONDecodable.swift in Sources */,
+				6ABB45021EF86C0900E344AF /* DecodableEndpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +422,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -439,7 +432,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -484,7 +481,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -492,7 +491,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -544,7 +547,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -571,7 +575,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.teeps.BuckoNetworking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -584,7 +589,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.teeps.BuckoNetworkingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -597,7 +603,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.teeps.BuckoNetworkingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -627,7 +634,7 @@
 				PRODUCT_NAME = BuckoNetworking;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -657,7 +664,7 @@
 				PRODUCT_NAME = BuckoNetworking;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
