@@ -106,7 +106,7 @@ struct User: Decodable {
 }
 
 struct UserService: DecodableEndpoint {
-  typealias Response = User
+  typealias ResponseType = User
   var baseURL: String = "https://example.com/"
   var path: String = "users/"
   var method: HTTPMethod = .post
@@ -125,6 +125,31 @@ UserService().request { (user, error) in
   }
 
   // Do something with user
+}
+
+```
+
+Using an enum and `DecodableEndpoint` is possible, however, `DecodableEndpoint` will require that each case return the same type.
+If you want each case to response with a separate `Codable` type, you can use `Endpoint` and its `request(responseType:, completion:)` method.
+
+```swift
+enum UserService: Endpoint {
+  case index
+
+  var baseURL: String { return "https://example.com" }
+  var path: String { return "/users" }
+  var method: HTTPMethod { return .get }
+  var body: Parameters { return Parameters() }
+  var headers: HTTPHeaders { return HTTPHeaders() }
+}
+
+UserService.index.request(responseType: [User].self) { (users, error) in
+  guard let users = users else {
+    // Do Error
+    return
+  }
+
+  // Do something with users
 }
 
 ```

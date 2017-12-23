@@ -59,3 +59,29 @@ public extension Endpoint {
     return Parameters()
   }
 }
+
+public extension Endpoint {
+  @discardableResult
+  public func request<T: Decodable>(
+    responseType: T.Type,
+    completion: @escaping ((T?, Error?) -> Void)) -> Request {
+    let request = Bucko.shared.requestData(endpoint: self) { response in
+      
+      if response.result.isSuccess {
+        guard let value = response.result.value else { return }
+        
+        do {
+          let result = try JSONDecoder().decode(T.self, from: value)
+          completion(result, nil)
+        } catch {
+          debugPrint(error)
+          completion(nil, error)
+        }
+      } else {
+        completion(nil, response.result.error)
+      }
+    }
+    
+    return request
+  }
+}

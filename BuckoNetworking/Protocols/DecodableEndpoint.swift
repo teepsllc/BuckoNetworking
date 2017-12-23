@@ -9,19 +9,19 @@
 import Alamofire
 
 public protocol DecodableEndpoint: Endpoint {
-  associatedtype Response: Decodable
+  associatedtype ResponseType: Decodable
 }
 
 public extension DecodableEndpoint {
   @discardableResult
-  public func request(completion: @escaping ((Response?, Error?) -> Void)) -> Request {
+  public func request(completion: @escaping ((ResponseType?, Error?) -> Void)) -> Request {
     let request = Bucko.shared.requestData(endpoint: self) { response in
       
       if response.result.isSuccess {
         guard let value = response.result.value else { return }
         
         do {
-          let result = try JSONDecoder().decode(Response.self, from: value)
+          let result = try JSONDecoder().decode(ResponseType.self, from: value)
           completion(result, nil)
         } catch {
           debugPrint(error)
