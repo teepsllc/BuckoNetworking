@@ -130,7 +130,7 @@ UserService().request { (user, error) in
 ```
 
 Using an enum and `DecodableEndpoint` is possible, however, `DecodableEndpoint` will require that each case return the same type.
-If you want each case to response with a separate `Codable` type, you can use `Endpoint` and its `request(responseType:, completion:)` method.
+If you want each case to respond with a separate `Codable` type, you can use `Endpoint` and its `request(responseType:, completion:)` method.
 
 ```swift
 enum UserService: Endpoint {
