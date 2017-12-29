@@ -8,6 +8,7 @@
 
 @import Foundation;
 @import Alamofire;
+@import PromiseKit;
 
 //! Project version number for BuckoNetworking.
 FOUNDATION_EXPORT double BuckoNetworkingVersionNumber;
