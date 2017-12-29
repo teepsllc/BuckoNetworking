@@ -6,8 +6,6 @@
 //  Copyright © 2017 Teeps. All rights reserved.
 //
 
-import Alamofire
-
 public protocol DecodableEndpoint: Endpoint {
   associatedtype ResponseType: Decodable
 }
@@ -33,5 +31,14 @@ public extension DecodableEndpoint {
     }
     
     return request
+  }
+  
+  public func request() -> Promise<ResponseType> {
+    return Bucko.shared.requestData(endpoint: self).then { data in
+      return Promise { fullfill, _ in
+        let result = try JSONDecoder().decode(ResponseType.self, from: data)
+        fullfill(result)
+      }
+    }
   }
 }
