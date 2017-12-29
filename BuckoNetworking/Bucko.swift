@@ -155,4 +155,44 @@ public struct Bucko {
     print(request.description)
     return request
   }
+  
+  public func request(endpoint: Endpoint) -> Promise<DataResponse<Any>> {
+    return Promise { fullfill, reject in
+      request(endpoint: endpoint) { response in
+        
+        if response.result.isSuccess {
+          fullfill(response)
+        } else {
+          if let responseError = response.result.value {
+            do {
+              let json = try JSONSerialization.data(withJSONObject: responseError, options: [])
+              reject(BuckoError(apiError: json))
+            } catch {
+              reject(response.result.error!)
+            }
+          } else {
+            reject(response.result.error!)
+          }
+        }
+      }
+    }
+  }
+  
+  public func requestData(endpoint: Endpoint) -> Promise<Data> {
+    return Promise { fulfill, reject in
+      requestData(endpoint: endpoint) { response in
+        
+        if response.result.isSuccess {
+          fulfill(response.result.value!)
+        } else {
+          
+          if let responseError = response.result.value {
+            reject(BuckoError(apiError: responseError))
+          } else {
+            reject(response.result.error!)
+          }
+        }
+      }
+    }
+  }
 }
