@@ -8,7 +8,6 @@
 
 @import Foundation;
 @import Alamofire;
-@import SwiftyJSON;
 
 //! Project version number for BuckoNetworking.
 FOUNDATION_EXPORT double BuckoNetworkingVersionNumber;

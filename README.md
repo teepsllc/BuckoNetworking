@@ -10,10 +10,10 @@ After developing a number of applications, we noticed that everyone's networking
 
 We ended up going with [Alamofire](https://github.com/Alamofire/Alamofire) instead of `URLSession` for a few reasons. Alamofire is asynchronous by nature, has session management, reduces boilerplate code, and is very easy to use.
 
-[SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
-
 ### Installation
 ------
+
+- NOTE: If you are looking for the Swift 3 version, use BuckoNetworking version `1.1.3`.
 
 #### Carthage
 
@@ -29,11 +29,11 @@ $ brew install carthage
 To integrate BuckoNetworking into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "teepsllc/BuckoNetworking"
+github "teepsllc/BuckoNetworking", ~> 2.0.0
 ```
 
 1. Run `carthage update --platform iOS --no-use-binaries` to build the framework.
-1. On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop `BuckoNetworking.framework` from the [Carthage/Build]() folder on disk. You will also need to drag `Alamofire.framework` and `SwiftyJSON.framework` into your project.
+1. On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop `BuckoNetworking.framework` from the [Carthage/Build]() folder on disk. You will also need to drag `Alamofire.framework` into your project.
 1. On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase”. Create a Run Script in which you specify your shell (ex: `/bin/sh`), add the following contents to the script area below the shell:
 
   ```sh
@@ -45,7 +45,6 @@ github "teepsllc/BuckoNetworking"
   ```
   $(SRCROOT)/Carthage/Build/iOS/BuckoNetworking.framework
   $(SRCROOT)/Carthage/Build/iOS/Alamofire.framework
-  $(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework
   ```
   This script works around an [App Store submission bug](http://www.openradar.me/radar?id=6409498411401216) triggered by universal binaries and ensures that necessary bitcode-related files and dSYMs are copied when archiving.
 
@@ -87,6 +86,77 @@ $ pod install
 ### Usage
 ------
 `BuckoNetworking` revolves around `Endpoint`s. There are a few ways you can use it. We use `services` to make all of our endpoints.
+
+#### DecodableEndpoint
+
+Swift 4 introduced the Codable protocol and the `DecodableEndpoint` in BuckoNetworking uses this to the max!
+
+
+```swift
+import BuckoNetworking
+
+struct User: Decodable {
+  var name: String
+  var phoneNumber: String
+
+  enum CodingKeys: String, CodingKey {
+    case name
+    case phoneNumber = "phone_number"
+  }
+}
+
+struct UserService: DecodableEndpoint {
+  typealias ResponseType = User
+  var baseURL: String = "https://example.com/"
+  var path: String = "users/"
+  var method: HTTPMethod = .post
+  var parameters: Parameters {
+      var parameters = Parameters()
+      parameters["first_name"] = "Bucko"
+      return parameters
+  }
+  var headers: HttpHeaders = ["Authorization" : "Bearer SOME_TOKEN"]
+}
+
+UserService().request { (user, error) in
+  guard let user = user else {
+    // Do Error
+    return
+  }
+
+  // Do something with user
+}
+
+```
+
+Using an enum and `DecodableEndpoint` is possible, however, `DecodableEndpoint` will require that each case return the same type.
+If you want each case to respond with a separate `Codable` type, you can use `Endpoint` and its `request(responseType:, completion:)` method.
+
+```swift
+enum UserService: Endpoint {
+  case index
+
+  var baseURL: String { return "https://example.com" }
+  var path: String { return "/users" }
+  var method: HTTPMethod { return .get }
+  var body: Parameters { return Parameters() }
+  var headers: HTTPHeaders { return HTTPHeaders() }
+}
+
+UserService.index.request(responseType: [User].self) { (users, error) in
+  guard let users = users else {
+    // Do Error
+    return
+  }
+
+  // Do something with users
+}
+
+```
+
+If you don't want to use `Codable`, you can instead use the `Endpoint` protocol, and provide your own object mapping.
+
+#### Endpoint
 
 #### class/struct
 
