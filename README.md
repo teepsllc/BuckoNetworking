@@ -29,7 +29,7 @@ $ brew install carthage
 To integrate BuckoNetworking into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "teepsllc/BuckoNetworking", ~> 2.0.0
+github "teepsllc/BuckoNetworking" ~> 2.0.0
 ```
 
 1. Run `carthage update --platform iOS --no-use-binaries` to build the framework.
