@@ -15,18 +15,6 @@ public protocol BuckoErrorHandler: class {
 
 public typealias BuckoResponseClosure = ((DataResponse<Any>) -> Void)
 public typealias BuckoDataResponseClosure = ((DataResponse<Data>) -> Void)
-@available(*, deprecated, message: "Use HTTPMethod instead")
-public typealias HttpMethod = HTTPMethod
-@available(*, deprecated, message: "Use HTTPHeaders instead")
-public typealias HttpHeaders = HTTPHeaders
-@available(*, deprecated, message: "Use ParameterEncoding instead")
-public typealias Encoding = ParameterEncoding
-@available(*, deprecated, message: "Use URLEncoding instead")
-public typealias UrlEncoding = URLEncoding
-@available(*, deprecated, message: "Use JSONEncoding instead")
-public typealias JsonEncoding = JSONEncoding
-@available(*, deprecated, message: "Use Parameters instead")
-public typealias Body = Parameters
 
 public struct Bucko {
   /**
@@ -157,21 +145,21 @@ public struct Bucko {
   }
   
   public func request(endpoint: Endpoint) -> Promise<DataResponse<Any>> {
-    return Promise { fullfill, reject in
+    return Promise { seal in
       request(endpoint: endpoint) { response in
         
         if response.result.isSuccess {
-          fullfill(response)
+          seal.fulfill(response)
         } else {
           if let responseError = response.result.value {
             do {
               let json = try JSONSerialization.data(withJSONObject: responseError, options: [])
-              reject(BuckoError(apiError: json))
+              seal.reject(BuckoError(apiError: json))
             } catch {
-              reject(response.result.error!)
+              seal.reject(response.result.error!)
             }
           } else {
-            reject(response.result.error!)
+            seal.reject(response.result.error!)
           }
         }
       }
@@ -179,17 +167,17 @@ public struct Bucko {
   }
   
   public func requestData(endpoint: Endpoint) -> Promise<Data> {
-    return Promise { fulfill, reject in
+    return Promise { seal in
       requestData(endpoint: endpoint) { response in
         
         if response.result.isSuccess {
-          fulfill(response.result.value!)
+          seal.fulfill(response.result.value!)
         } else {
           
           if let responseError = response.result.value {
-            reject(BuckoError(apiError: responseError))
+            seal.reject(BuckoError(apiError: responseError))
           } else {
-            reject(response.result.error!)
+            seal.reject(response.result.error!)
           }
         }
       }

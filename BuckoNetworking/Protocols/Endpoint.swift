@@ -87,9 +87,9 @@ public extension Endpoint {
   
   public func request<T: Decodable>(responseType: T.Type) -> Promise<T> {
     return Bucko.shared.requestData(endpoint: self).then { data in
-      return Promise { fullfill, _ in
+      return Promise { seal in
         let result = try JSONDecoder().decode(T.self, from: data)
-        fullfill(result)
+        seal.fulfill(result)
       }
     }
   }
