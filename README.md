@@ -31,7 +31,7 @@ $ brew install carthage
 To integrate BuckoNetworking into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "teepsllc/BuckoNetworking" ~> 2.0.0
+github "teepsllc/BuckoNetworking" ~> 2.1.0
 ```
 
 1. Run `carthage update --platform iOS --no-use-binaries` to build the framework.
@@ -229,7 +229,7 @@ import BuckoNetworking
 // Create an Endpoint
 enum UserService {
     case getUsers
-    case getUser(id: String)
+    case getUser(id: Int)
     case createUser(firstName: String, lastName: String)
 }
 
@@ -276,14 +276,14 @@ extension UserService: Endpoint {
 }
 
 // Use your Endpoint
-Bucko.shared.request(UserService.getUser(id: "1")).then { response in
+Bucko.shared.request(UserService.getUser(id: 1)).then { response in
   // Response successful!
 }.catch { error in
   //  Failure
 }
 
 // Or without Promises
-Bucko.shared.request(UserService.getUser(id: "1")) { response in
+Bucko.shared.request(UserService.getUser(id: 1)) { response in
   if response.result.isSuccess {
     // Response successful!
     // Convert `response.result.value!` to JSON
