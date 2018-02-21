@@ -50,17 +50,17 @@ github "teepsllc/BuckoNetworking" ~> 2.1.0
    $(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework
    ```
    
-  This script works around an [App Store submission bug](http://www.openradar.me/radar?id=6409498411401216) triggered by universal binaries and ensures that necessary bitcode-related files and dSYMs are copied when archiving.
+   This script works around an [App Store submission bug](http://www.openradar.me/radar?id=6409498411401216) triggered by universal binaries and ensures that necessary bitcode-related files and dSYMs are copied when archiving.
 
 5. Add the paths to the copied frameworks to the “Output Files”, e.g.:
   
-  ```
-  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BuckoNetworking.framework
-  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)Alamofire.framework
-  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PromiseKit.framework
-  ```
+   ```
+   $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BuckoNetworking.framework
+   $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)Alamofire.framework
+   $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PromiseKit.framework
+   ```
   
-  With output files specified alongside the input files, Xcode only needs to run the script when the input files have changed or the output files are missing. This means dirty builds will be faster when you haven't rebuilt frameworks with Carthage.
+    With output files specified alongside the input files, Xcode only needs to run the script when the input files have changed or the output files are missing. This means dirty builds will be faster when you haven't rebuilt frameworks with Carthage.
 
 #### CocoaPods
 
