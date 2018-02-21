@@ -64,7 +64,7 @@ public extension Endpoint {
   @discardableResult
   public func request<T: Decodable>(
     responseType: T.Type,
-    completion: @escaping ((T?, Error?) -> Void)) -> Request {
+    completion: @escaping ((T?, DataResponse<Data>) -> Void)) -> Request {
     let request = Bucko.shared.requestData(endpoint: self) { response in
       
       if response.result.isSuccess {
@@ -72,13 +72,13 @@ public extension Endpoint {
         
         do {
           let result = try JSONDecoder().decode(T.self, from: value)
-          completion(result, nil)
+          completion(result, response)
         } catch {
           debugPrint(error)
-          completion(nil, error)
+          completion(nil, response)
         }
       } else {
-        completion(nil, response.result.error)
+        completion(nil, response)
       }
     }
     
