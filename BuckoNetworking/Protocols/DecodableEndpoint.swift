@@ -12,7 +12,7 @@ public protocol DecodableEndpoint: Endpoint {
 
 public extension DecodableEndpoint {
   @discardableResult
-  public func request(completion: @escaping ((ResponseType?, Error?) -> Void)) -> Request {
+  public func request(completion: @escaping ((ResponseType?, DataResponse<Data>) -> Void)) -> Request {
     let request = Bucko.shared.requestData(endpoint: self) { response in
       
       if response.result.isSuccess {
@@ -20,13 +20,13 @@ public extension DecodableEndpoint {
         
         do {
           let result = try JSONDecoder().decode(ResponseType.self, from: value)
-          completion(result, nil)
+          completion(result, response)
         } catch {
           debugPrint(error)
-          completion(nil, error)
+          completion(nil, response)
         }
       } else {
-        completion(nil, response.result.error)
+        completion(nil, response)
       }
     }
     
