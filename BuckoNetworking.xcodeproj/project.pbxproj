@@ -22,6 +22,8 @@
 		6ABB45021EF86C0900E344AF /* DecodableEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D02921E4CC12900E66FD0 /* DecodableEndpoint.swift */; };
 		6ABB45041EF86DE200E344AF /* BuckoNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A7D02751E4CBEFC00E66FD0 /* BuckoNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6AEC6FDE1E84B05500BBD3F7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEC6FDC1E84B05500BBD3F7 /* Alamofire.framework */; };
+		6AFA9DED1FF68A0D00FDC188 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFA9DEC1FF68A0D00FDC188 /* PromiseKit.framework */; };
+		6AFA9DEF1FF68A3400FDC188 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFA9DEE1FF68A3400FDC188 /* PromiseKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		6ABB44FB1EF8661100E344AF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		6AEC6FDB1E84B05500BBD3F7 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		6AEC6FDC1E84B05500BBD3F7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		6AFA9DEC1FF68A0D00FDC188 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
+		6AFA9DEE1FF68A3400FDC188 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/Mac/PromiseKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AFA9DED1FF68A0D00FDC188 /* PromiseKit.framework in Frameworks */,
 				6AEC6FDE1E84B05500BBD3F7 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AFA9DEF1FF68A3400FDC188 /* PromiseKit.framework in Frameworks */,
 				6ABB44FD1EF8661100E344AF /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,6 +158,8 @@
 		6A7D02D41E4CC5E900E66FD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6AFA9DEC1FF68A0D00FDC188 /* PromiseKit.framework */,
+				6AFA9DEE1FF68A3400FDC188 /* PromiseKit.framework */,
 				6ABB44FA1EF8661100E344AF /* SwiftyJSON.framework */,
 				6ABB44FB1EF8661100E344AF /* Alamofire.framework */,
 				6AEC6FDB1E84B05500BBD3F7 /* SwiftyJSON.framework */,

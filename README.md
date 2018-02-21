@@ -8,7 +8,9 @@ After developing a number of applications, we noticed that everyone's networking
 ### Dependencies
 ------
 
-We ended up going with [Alamofire](https://github.com/Alamofire/Alamofire) instead of `URLSession` for a few reasons. Alamofire is asynchronous by nature, has session management, reduces boilerplate code, and is very easy to use.
+* [Alamofire](https://github.com/Alamofire/Alamofire) - We ended up going with Alamofire instead of `URLSession` for a few reasons. Alamofire is asynchronous by nature, has session management, reduces boilerplate code, and is very easy to use.
+
+* [PromiseKit](https://github.com/mxcl/PromiseKit) - We use Promises because they simplify asynchronous programming and separate successful and failed responses, allowing you to focus on each part in their own individual closures.
 
 ### Installation
 ------
@@ -33,7 +35,7 @@ github "teepsllc/BuckoNetworking" ~> 2.0.0
 ```
 
 1. Run `carthage update --platform iOS --no-use-binaries` to build the framework.
-1. On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop `BuckoNetworking.framework` from the [Carthage/Build]() folder on disk. You will also need to drag `Alamofire.framework` into your project.
+1. On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop `BuckoNetworking.framework` from the [Carthage/Build]() folder on disk. You will also need to drag `Alamofire.framework` and `PromiseKit.framework` into your project.
 1. On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase”. Create a Run Script in which you specify your shell (ex: `/bin/sh`), add the following contents to the script area below the shell:
 
   ```sh
@@ -45,6 +47,7 @@ github "teepsllc/BuckoNetworking" ~> 2.0.0
   ```
   $(SRCROOT)/Carthage/Build/iOS/BuckoNetworking.framework
   $(SRCROOT)/Carthage/Build/iOS/Alamofire.framework
+  $(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework
   ```
   This script works around an [App Store submission bug](http://www.openradar.me/radar?id=6409498411401216) triggered by universal binaries and ensures that necessary bitcode-related files and dSYMs are copied when archiving.
 
@@ -91,10 +94,7 @@ $ pod install
 
 Swift 4 introduced the Codable protocol and the `DecodableEndpoint` in BuckoNetworking uses this to the max!
 
-
 ```swift
-import BuckoNetworking
-
 struct User: Decodable {
   var name: String
   var phoneNumber: String
@@ -107,17 +107,29 @@ struct User: Decodable {
 
 struct UserService: DecodableEndpoint {
   typealias ResponseType = User
-  var baseURL: String = "https://example.com/"
-  var path: String = "users/"
-  var method: HTTPMethod = .post
-  var parameters: Parameters {
-      var parameters = Parameters()
-      parameters["first_name"] = "Bucko"
-      return parameters
-  }
-  var headers: HttpHeaders = ["Authorization" : "Bearer SOME_TOKEN"]
+  var baseURL: String { return "https://example.com" }
+  var path: String { return "/users" }
+  var method: HTTPMethod { return .get }
+  var body: Parameters { return Parameters() }
+  var headers: HTTPHeaders { return HTTPHeaders() }
 }
 
+UserService().request().then { users in
+  // Do something with users
+  users.count
+}.catch { error in
+
+  if let json = error.json {
+    // Use json
+  } else {
+    // Some other error occurred that doesn't include json
+  }
+}
+```
+
+If you don't want to use Promises, BuckoNetworking also provides normal closures:
+
+```swift
 UserService().request { (user, error) in
   guard let user = user else {
     // Do Error
@@ -143,6 +155,20 @@ enum UserService: Endpoint {
   var headers: HTTPHeaders { return HTTPHeaders() }
 }
 
+// Use your Endpoint
+UserService.index.request(responseType: [User].self).then { users in
+  // Do something with users
+  users.count
+}.catch { error in
+
+  if let json = error.json {
+    // Use json
+  } else {
+    // Some other error occurred that doesn't include json
+  }
+}
+
+// Or without Promises
 UserService.index.request(responseType: [User].self) { (users, error) in
   guard let users = users else {
     // Do Error
@@ -163,7 +189,7 @@ If you don't want to use `Codable`, you can instead use the `Endpoint` protocol,
 ```swift
 import BuckoNetworking
 
-// Create an endpoint
+// Create an Endpoint
 struct UserCreateService: Endpoint {
     var baseURL: String = "https://example.com/"
     var path: String = "users/"
@@ -176,11 +202,18 @@ struct UserCreateService: Endpoint {
     var headers: HttpHeaders = ["Authorization" : "Bearer SOME_TOKEN"]
 }
 
-// Use your endpoint
+// Use your Endpoint
+Bucko.shared.request(UserCreateService()).then { response in
+  // Response successful!
+}.catch { error in
+  //  Failure
+}
+
+// Or without Promises
 Bucko.shared.request(UserCreateService()) { response in
   if response.result.isSuccess {
     // Response successful!
-    let json = Json(response.result.value!)
+    // Convert `response.result.value!` to JSON
   } else {
     // Failure
   }
@@ -193,7 +226,7 @@ Bucko.shared.request(UserCreateService()) { response in
 ```swift
 import BuckoNetworking
 
-// Create an endpoint
+// Create an Endpoint
 enum UserService {
     case getUsers
     case getUser(id: String)
@@ -242,11 +275,18 @@ extension UserService: Endpoint {
     }
 }
 
-// Use your endpoint
+// Use your Endpoint
+Bucko.shared.request(UserService.getUser(id: "1")).then { response in
+  // Response successful!
+}.catch { error in
+  //  Failure
+}
+
+// Or without Promises
 Bucko.shared.request(UserService.getUser(id: "1")) { response in
   if response.result.isSuccess {
     // Response successful!
-    let json = Json(response.result.value!)
+    // Convert `response.result.value!` to JSON
   } else {
     // Failure
   }
