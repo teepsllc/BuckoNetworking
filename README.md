@@ -35,28 +35,32 @@ github "teepsllc/BuckoNetworking" ~> 2.1.0
 ```
 
 1. Run `carthage update --platform iOS --no-use-binaries` to build the framework.
-1. On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop `BuckoNetworking.framework` from the [Carthage/Build]() folder on disk. You will also need to drag `Alamofire.framework` and `PromiseKit.framework` into your project.
-1. On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase”. Create a Run Script in which you specify your shell (ex: `/bin/sh`), add the following contents to the script area below the shell:
+2. On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop `BuckoNetworking.framework` from the [Carthage/Build]() folder on disk. You will also need to drag `Alamofire.framework` and `PromiseKit.framework` into your project.
+3. On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase”. Create a Run Script in which you specify your shell (ex: `/bin/sh`), add the following contents to the script area below the shell:
 
-  ```sh
-  /usr/local/bin/carthage copy-frameworks
-  ```
+   ```sh
+   /usr/local/bin/carthage copy-frameworks
+   ```
 
-  and add the paths to the frameworks you want to use under “Input Files”, e.g.:
+4. Add the paths to the frameworks you want to use under “Input Files”, e.g.:
 
-  ```
-  $(SRCROOT)/Carthage/Build/iOS/BuckoNetworking.framework
-  $(SRCROOT)/Carthage/Build/iOS/Alamofire.framework
-  $(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework
-  ```
+   ```
+   $(SRCROOT)/Carthage/Build/iOS/BuckoNetworking.framework
+   $(SRCROOT)/Carthage/Build/iOS/Alamofire.framework
+   $(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework
+   ```
+   
   This script works around an [App Store submission bug](http://www.openradar.me/radar?id=6409498411401216) triggered by universal binaries and ensures that necessary bitcode-related files and dSYMs are copied when archiving.
 
-
-To use BuckoNetworking, just import the module.
-
-```swift
-import BuckoNetworking
-```
+5. Add the paths to the copied frameworks to the “Output Files”, e.g.:
+  
+  ```
+  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BuckoNetworking.framework
+  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)Alamofire.framework
+  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PromiseKit.framework
+  ```
+  
+  With output files specified alongside the input files, Xcode only needs to run the script when the input files have changed or the output files are missing. This means dirty builds will be faster when you haven't rebuilt frameworks with Carthage.
 
 #### CocoaPods
 
@@ -88,6 +92,13 @@ $ pod install
 
 ### Usage
 ------
+
+To use BuckoNetworking, just import the module.
+
+```swift
+import BuckoNetworking
+```
+
 `BuckoNetworking` revolves around `Endpoint`s. There are a few ways you can use it. We use `services` to make all of our endpoints.
 
 #### DecodableEndpoint
