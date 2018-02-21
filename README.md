@@ -62,33 +62,6 @@ github "teepsllc/BuckoNetworking" ~> 2.1.0
   
     With output files specified alongside the input files, Xcode only needs to run the script when the input files have changed or the output files are missing. This means dirty builds will be faster when you haven't rebuilt frameworks with Carthage.
 
-#### CocoaPods
-
-Note: We don't use CocoaPods, so this may or may not work.
-
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
-
-```bash
-$ gem install cocoapods
-```
-
-To integrate BuckoNetworking into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '10.0'
-use_frameworks!
-
-target '<Your Target Name>' do
-    pod 'BuckoNetworking', :git => 'https://github.com/teepsllc/BuckoNetworking.git'
-end
-```
-
-Then, run the following command:
-
-```bash
-$ pod install
-```
 
 ### Usage
 ------
